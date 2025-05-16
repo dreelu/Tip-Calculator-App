@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="./output.css" rel="stylesheet">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    /* A fonte não funciona. Vou tentar baixar dps */
+  </style>
+</head>
+<body class="min-h-dvh bg-Green400">
+
+  <header>
+    <img src="../images/logo.svg" alt="">
+  </header>
+
+  <main class="flex justify-center items-start flex-col container h-fit bg-White p-5 rounded-2xl">
+    
+    <p class="text-lg text-Grey500 font-bold">Bill</p>
+    <input type="number" id="bill" class="p-2 w-full">
+
+    <p class="font-bold text-Grey500">Select Tip %</p>
+    <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] items-center gap-3 w-full max-w-dvw mb-7 text-lg">
+      <!-- Esse grid tá meio nojento. Tem mais espaço na direita que na esqueda. -->
+      <input type="button" value="5%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(5)">
+      <input type="button" value="10%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(10)">
+      <input type="button" value="15%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(15)">
+      <input type="button" value="25%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(25)">
+      <input type="button" value="50%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(50)">
+      <input type="number" placeholder="Custom" class="bg-Grey50 h-10 w-[20dvh] rounded text-Grey500 font-bold text-xl">
+      <!-- A cor do Custom não é a correta. Acho que a propriedade placeholder força ele a ser um pouco mais claro que a cor definida por padrão. -->
+    </div>
+
+    <p class="text-lg text-Grey500 font-bold">Number of People</p>
+    <input type="number" id="npeople" class="bg-Grey50 w-full p-2 mb-5">
+
+    <div class="bg-Green900 w-full">
+      Tip Amount
+      / person
+      Total
+      / person
+      <button class="w-4/5" onclick="CalculateTip()">Reset</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
