@@ -4,6 +4,13 @@ function TipValue(n) {
     TipPercantage = n/100
 }
 
+function customTip() {
+  let customTipBrute = document.querySelector("input#customTip")
+  let customTip = customTipBrute.value
+  
+    TipPercantage = customTip
+}
+
 function CalculateTip() {
     let BillInput = document.querySelector("input#bill")
     let PeopleAmount = document.querySelector("input#npeople")
