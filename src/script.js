@@ -21,7 +21,7 @@ function CalculateTip() {
     let TipAmount = (BillValue / PoeopleValue) * TipPercantage
     let Total = BillValue / PoeopleValue + TipAmount
 
-    window.alert(`${TipPercantage}`) // Debug Test
+    window.alert(`${Total}`) // Debug Test
 }
 
    // Matemática:
