@@ -8,7 +8,7 @@ function customTip() {
   let customTipBrute = document.querySelector("input#customTip")
   let customTip = customTipBrute.value
   
-    TipPercantage = customTip
+    TipPercantage = customTip/100
 }
 
 function CalculateTip() {
