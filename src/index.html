@@ -13,43 +13,73 @@
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
+    .active {background-color: hsl(172, 67%, 45%); color: hsl(183, 100%, 15%);}
+    .active-rb {filter: brightness(1);}
 
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    /* A fonte não funciona. Vou tentar baixar dps */
+      @font-face {
+        font-family: 'SpaceMono';
+        src: url('../fonts/SpaceMono-Regular.ttf') format('truetype'); 
+        font-weight: normal;
+        font-style: normal;
+  }
+
+  * {font-family: 'SpaceMono';}
+
+    /* A fonte não funciona. */
   </style>
 </head>
-<body class="min-h-dvh bg-Green400">
+<body class="min-h-dvh bg-Grey200 flex justify-center items-center flex-col">
 
-  <header>
-    <img src="../images/logo.svg" alt="">
+  <header class="flex justify-center">
+    <img src="../images/logo.svg" class="mb-10 mt-10" alt="">
   </header>
 
-  <main class="flex justify-center items-start flex-col container h-fit bg-White p-5 rounded-2xl">
+  <main class="flex justify-center items-start flex-col container h-fit bg-White p-5 xl:p-7 rounded-2xl xl:flex-row xl:items-stretch xl:justify-between xl:w-fit">
     
-    <p class="text-lg text-Grey500 font-bold">Bill</p>
-    <input type="number" id="bill" class="p-2 w-full">
-
-    <p class="font-bold text-Grey500">Select Tip %</p>
-    <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] items-center gap-3 w-full max-w-dvw mb-7 text-lg">
-      <!-- Esse grid tá meio nojento. Tem mais espaço na direita que na esqueda. -->
-      <input type="button" value="5%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(5)">
-      <input type="button" value="10%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(10)">
-      <input type="button" value="15%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(15)">
-      <input type="button" value="25%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(25)">
-      <input type="button" value="50%" class="bg-Green900 rounded h-10 w-[20dvh] text-White font-bold text-xl focus:bg-Green400 focus:text-Green900" onfocus="TipValue(50)">
-      <input type="number" placeholder="Custom" class="bg-Grey50 h-10 w-[20dvh] rounded text-Grey500 font-bold text-xl">
-      <!-- A cor do Custom não é a correta. Acho que a propriedade placeholder força ele a ser um pouco mais claro que a cor definida por padrão. -->
+    <div class="xl:p-5 xl:min-w-1/2">
+      <p class="text-lg text-Grey500 font-bold mt-3 mb-1">Bill</p>
+      
+      <div class="relative inline w-full h-10 mb-7">
+        <img src="../images/icon-dollar.svg" alt="dollar" class="absolute top-1/2 transform -translate-y-1/2 left-2">
+        <input type="number" placeholder="0" id="bill" class="p-2 w-full bg-Grey50 text-end rounded font-bold text-2xl">
+      </div>
+      <p class="font-bold text-Grey500">Select Tip %</p>
+      <div class="grid grid-cols-[repeat(auto-fit,_minmax(150px,_1fr))] items-center gap-3 w-full max-w-dvw mb-8 text-lg xl:grid-cols-[repeat(3,_0.6fr)] xl:grid-rows-2">
+        <!-- Esse grid tá meio nojento. Tem mais espaço na direita que na esqueda. -->
+        <input type="button" value="5%" class="bg-Green900 rounded h-10 w-[20dvh] xl:w-full text-White font-medium text-xl botao-fake-focus" onfocus="TipValue(5)">
+        <input type="button" value="10%" class="bg-Green900 rounded h-10 w-[20dvh] xl:w-full text-White font-medium text-xl botao-fake-focus" onfocus="TipValue(10)">
+        <input type="button" value="15%" class="bg-Green900 rounded h-10 w-[20dvh] xl:w-full text-White font-medium text-xl botao-fake-focus" onfocus="TipValue(15)">
+        <input type="button" value="25%" class="bg-Green900 rounded h-10 w-[20dvh] xl:w-full text-White font-medium text-xl botao-fake-focus" onfocus="TipValue(25)">
+        <input type="button" value="50%" class="bg-Green900 rounded h-10 w-[20dvh] xl:w-full text-White font-medium text-xl botao-fake-focus" onfocus="TipValue(50)">
+        <input type="number" placeholder="Custom" id="customTip" class="bg-Grey50 h-10 w-[20dvh] xl:w-full rounded text-Grey500 font-medium text-xl botao-fake-focus text-end xl:text-center" onblur="CustomTipPercantage()">
+        <!-- A cor do Custom não é a correta. Acho que a propriedade placeholder força ele a ser um pouco mais claro que a cor definida por padrão. -->
+      </div>
+      <p class="text-lg text-Grey500 font-bold mb-1">Number of People</p>
+      
+      <div class="relative inline w-full h-10 mb-7">
+        <img src="../images/icon-person.svg" alt="person" class="absolute top-1/2 transform -translate-y-1/2 left-2">
+        <input type="number" placeholder="0" id="npeople" class="bg-Grey50 w-full p-2 text-end rounded font-bold text-2xl">
+      </div>
     </div>
 
-    <p class="text-lg text-Grey500 font-bold">Number of People</p>
-    <input type="number" id="npeople" class="bg-Grey50 w-full p-2 mb-5">
+    <div class="bg-Green900 p-5 rounded-2xl w-full xl:min-w-1/2 xl:min-h-full xl:flex xl:justify-between xl:flex-col xl:p-7 xl:pt-16">
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 mb-10 xl:mb-0">
 
-    <div class="bg-Green900 w-full">
-      Tip Amount
-      / person
-      Total
-      / person
-      <button class="w-4/5" onclick="CalculateTip()">Reset</button>
+        <div class="text-lg font-medium leading-3.5 text-White">
+          Tip Amount <br>
+          <span class="text-Grey500 text-xs">/  person</span>
+        </div>
+
+        <p id="tipPerson" class="flex justify-end text-4xl text-Green400 font-bold">$0.00</p>
+
+        <div class="text-lg font-medium leading-3.5 text-White">
+          Total <br>
+          <span class="text-Grey500 text-xs">/  person</span>
+        </div>
+
+        <p id="totalPerson" class="flex justify-end text-4xl text-Green400 font-bold">$0.00</p>
+    </div>
+      <button class="w-full h-10 bg-Green400 text-Green900 filter brightness-50  rounded text-xl font-bold" id="resetButton" onclick="reset()">RESET</button>
     </div>
   </main>
 
@@ -57,7 +87,7 @@
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://github.com/dreelu">drelu</a>.
   </div>
 </body>
 </html>
